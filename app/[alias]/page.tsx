@@ -10,6 +10,8 @@ export default async function AliasPage({
     const alias = await params;
     const redirectUrl = await getRedirectUrl(alias.alias);
 
+    // if the alias wasn't found in the db, redirect to the home page, otherwise redirect to the
+    // url corresponding with the alias in the db
     if (!redirectUrl) {
         redirect('/');
     } else {

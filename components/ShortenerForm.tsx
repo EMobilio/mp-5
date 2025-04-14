@@ -89,9 +89,11 @@ export default function ShortenerForm() {
                     Shorten
                 </Button>
 
+                {/* conditionally render the error message if there is one */}
                 {errorMessage && (<FormHelperText sx={{ fontSize: "1.1rem", marginTop: "3%", color: "red" }}>{errorMessage}</FormHelperText>)}
             </form>
 
+            {/* conditionally render the shortened URL if the creation was successful and there is one */}
             {shortenedUrl && (
                 <div className={"mt-5 text-xl text-left w-full"}>
                     <FormHelperText sx={{ fontSize: "1.1rem" }}>

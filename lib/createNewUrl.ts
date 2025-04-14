@@ -2,6 +2,7 @@
 import getCollection, { URLS_COLLECTION } from "@/db";
 import {UrlProps} from "@/types";
 
+
 export default async function createNewUrl(
     url: string,
     alias: string,
