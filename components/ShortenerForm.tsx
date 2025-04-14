@@ -18,11 +18,16 @@ export default function ShortenerForm() {
         // call createNewUrl to shorten the URL, set the shortened URL state if successful,
         // and set the error message in case of an error
         try {
-            await createNewUrl(url, alias);
-            setShortenedUrl("https://mp-5-tau.vercel.app/" + alias);
-        } catch (error : unknown) {
-            const err = error as Error
-            setErrorMessage(err.message);
+            const res = await createNewUrl(url, alias);
+
+            if (res.success) {
+                setShortenedUrl("https://mp-5-tau.vercel.app/" + alias);
+            } else {
+                const err = res.error as string;
+                setErrorMessage(err);
+            }
+        } catch {
+            setErrorMessage("Server error: Please try again later");
         }
     }
 

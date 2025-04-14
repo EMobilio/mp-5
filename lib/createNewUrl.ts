@@ -5,7 +5,7 @@ import {UrlProps} from "@/types";
 export default async function createNewUrl(
     url: string,
     alias: string,
-) : Promise<UrlProps> {
+) : Promise<{success: boolean, error?: string, data?: UrlProps}> {
     console.log("Creating new url...");
 
     const shortened : UrlProps = {
@@ -20,21 +20,20 @@ export default async function createNewUrl(
     try {
         await fetch(url);
     } catch {
-        throw new Error("Invalid URL: Please enter a valid URL");
+        return { success: false, error: "Invalid URL: Please enter a valid URL" };
     }
-
 
     // check if the alias is already in the db and throw an error if so
     const existingAlias = await urlsCollection.findOne({ alias: alias })
     if (existingAlias) {
-        throw new Error("Invalid alias: This alias is already taken");
+        return { success: false, error: "Invalid alias: This alias is already taken" };
     }
 
     // insert the shortened URL into the db
     const res = await urlsCollection.insertOne({...shortened})
     if (!res.acknowledged) {
-        throw new Error("DB insert failed");
+        return { success: false, error: "DB insert failed" };
     }
 
-    return ({ ...shortened });
+    return { success: true, data: {...shortened} };
 }
