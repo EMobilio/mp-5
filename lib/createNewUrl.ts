@@ -33,7 +33,7 @@ export default async function createNewUrl(
     // insert the shortened URL into the db
     const res = await urlsCollection.insertOne({...shortened})
     if (!res.acknowledged) {
-        return { success: false, error: "DB insert failed" };
+        throw new Error("DB insert failed");
     }
 
     return { success: true, data: {...shortened} };

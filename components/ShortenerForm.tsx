@@ -2,6 +2,7 @@
 import { Button, FormHelperText, TextField, InputLabel } from "@mui/material";
 import {FormEvent, useState} from "react";
 import createNewUrl from "@/lib/createNewUrl";
+import ShortenedUrl from "@/components/ShortenedUrl";
 
 
 export default function ShortenerForm() {
@@ -94,20 +95,7 @@ export default function ShortenerForm() {
             </form>
 
             {/* conditionally render the shortened URL if the creation was successful and there is one */}
-            {shortenedUrl && (
-                <div className={"mt-5 text-xl text-left w-full"}>
-                    <FormHelperText sx={{ fontSize: "1.1rem" }}>
-                        Your URL:
-                    </FormHelperText>
-
-                    <a href={shortenedUrl}
-                       target={"_blank"}
-                       className={"font-semibold text-2xl text-[#D183C9] hover:underline hover:text-[#DCABDF]"}
-                    >
-                        {shortenedUrl}
-                    </a>
-                </div>
-            )}
+            {shortenedUrl && (<ShortenedUrl shortenedUrl={shortenedUrl} />)}
         </div>
     );
 }
