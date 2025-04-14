@@ -19,7 +19,7 @@ export default function ShortenerForm() {
         // and set the error message in case of an error
         try {
             await createNewUrl(url, alias);
-            setShortenedUrl("https://mp-5-.vercel.app/" + alias);
+            setShortenedUrl("https://mp-5-tau.vercel.app/" + alias);
         } catch (error : unknown) {
             const err = error as Error
             setErrorMessage(err.message);
@@ -57,7 +57,7 @@ export default function ShortenerForm() {
 
                 {/* MUI text field for alias */}
                 <div className={"flex items-center w-full"}>
-                    <InputLabel sx={{ fontSize: "1.1rem", maxWidth: "fit-content"}}>https://mp-5-.vercel.app/</InputLabel>
+                    <InputLabel sx={{ fontSize: "1.1rem", maxWidth: "fit-content"}}>https://mp-5-tau.vercel.app/</InputLabel>
                     <TextField
                         id={"alias"}
                         label={"Custom Alias"}
