@@ -29,7 +29,7 @@ export default async function createNewUrl(
     // characters and return an error if so
     const regex = /[\/?&=]/;
     if (alias.length == 0 || regex.test(alias)) {
-        return { success: false, error: "Invalid alias: Only valid URL characters are allowed." };
+        return { success: false, error: "Invalid alias: Only valid URL characters are allowed" };
     }
 
     // check if the alias is already in the db and return an error if so
