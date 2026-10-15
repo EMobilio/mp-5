@@ -15,7 +15,7 @@
     "@mui/joy": "^5.0.0-beta.52",
     "@mui/material": "^7.0.2",
     "mongodb": "^6.15.0",
-    "next": "15.2.5",
+    "next": "15.2.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
